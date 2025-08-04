@@ -177,19 +177,19 @@ calculate_nca_tcell <- function(time, conc, dose, metrics = "all") {
   }
 
   if ("VolumeOfDistributionObs" %in% metrics_to_calc) {
-    result$VolumeOfDistributionObs <- getVzF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
+    result$VolumeOfDistributionObs <- getVzF(data = tmp, type = "obs", Dose = dose, method = "LinearUpLogDown")
   }
 
   if ("ClearanceObs" %in% metrics_to_calc) {
-    result$ClearanceObs <- getClF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
+    result$ClearanceObs <- getClF(data = tmp, type = "obs", Dose = dose, method = "LinearUpLogDown")
   }
 
   if ("VolumeOfDistributionPred" %in% metrics_to_calc) {
-    result$VolumeOfDistributionPred <- getVzF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
+    result$VolumeOfDistributionPred <- getVzF(data = tmp, type = "pred", Dose = dose, method = "LinearUpLogDown")
   }
 
   if ("ClearancePred" %in% metrics_to_calc) {
-    result$ClearancePred <- getClF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
+    result$ClearancePred <- getClF(data = tmp, type = "pred", Dose = dose, method = "LinearUpLogDown")
   }  
 
   return(result)
@@ -346,19 +346,19 @@ calculate_nca_cytokine <- function(time, conc, dose, metrics = "all") {
   }
 
   if ("VolumeOfDistributionObs" %in% metrics_to_calc) {
-    result$VolumeOfDistributionObs <- getVzF(data = tmp, type = "obs", Dose = tmp.dose, method = "Linear")
+    result$VolumeOfDistributionObs <- getVzF(data = tmp, type = "obs", Dose = dose, method = "Linear")
   }
 
   if ("ClearanceObs" %in% metrics_to_calc) {
-    result$ClearanceObs <- getClF(data = tmp, type = "obs", Dose = tmp.dose, method = "Linear")
+    result$ClearanceObs <- getClF(data = tmp, type = "obs", Dose = dose, method = "Linear")
   }
 
   if ("VolumeOfDistributionPred" %in% metrics_to_calc) {
-    result$VolumeOfDistributionPred <- getVzF(data = tmp, type = "pred", Dose = tmp.dose, method = "Linear")
+    result$VolumeOfDistributionPred <- getVzF(data = tmp, type = "pred", Dose = dose, method = "Linear")
   }
 
   if ("ClearancePred" %in% metrics_to_calc) {
-    result$ClearancePred <- getClF(data = tmp, type = "pred", Dose = tmp.dose, method = "Linear")
+    result$ClearancePred <- getClF(data = tmp, type = "pred", Dose = dose, method = "Linear")
   }  
   
   return(result)

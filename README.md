@@ -76,10 +76,10 @@ cytokine_results <- calculate_nca_cytokine(time, conc, metrics = c("Cmax", "Tmax
 - `MrtLast`:	Mean residence time from the time of dosing to the time of the last measurable concentration AumcLast / AucLast
 - `MrtInfObs`:	Mean residence time (MRT) extrapolated to infinity based on AucInfObs
 - `MrtInfPred`:	Mean residence time (MRT) extrapolated to infinity based on AucInfPred
-- `AucD7`:	Area under the curve from day 1 (infusion day) to day 8.
-- `AucD28`:	Area under the curve from day 1 (infusion day) to day 29.
-- `AucM3`:	Area under the curve from day 1 (infusion day) to day 85.
-- `AucM6`:	Area under the curve from day 1 (infusion day) to day 169.
+- `AucD7`:	Area under the curve from day 0 (infusion day) to day 7.
+- `AucD28`:	Area under the curve from day 0 (infusion day) to day 28.
+- `AucM3`:	Area under the curve from day 0 (infusion day) to day 84.
+- `AucM6`:	Area under the curve from day 0 (infusion day) to day 168.
 - `VolumeOfDistributionObs`:	Volume of distribution based on the terminal phase Dose / (AucInfObs * LambdaZ)
 - `ClearanceObs`:	Total body clearance for extravascular administration Dose/AucInfObs
 - `VolumeOfDistributionPred`:	Volume of distribution based on the terminal phase Dose / (AucInfPred * LambdaZ)

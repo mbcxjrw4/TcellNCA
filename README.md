@@ -20,7 +20,7 @@ It supports preprocessing, flexible metric selection, and quality control of pha
 You can install the development version from GitHub:
 ```r
 # install.packages("devtools")
-devtools::install_github("your-username/ncaCell")
+devtools::install_github("your-username/TcellNCA")
 ```
 
 ## 🧬 Usage

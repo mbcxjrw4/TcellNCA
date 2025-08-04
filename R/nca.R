@@ -1,6 +1,6 @@
 # Predefined list of available metrics
 .available_nca_metrics <- c(
-  "N_Samples", "Rsq", "Rsq_adjusted", "Corr_XY", "No_points_lambda_z", "Lambda_z", "Lambda_z_intercept", "Lambda_z_lower", "Lambda_z_upper", "Halflife_Lambda_z", "Span", "Tmax", "Cmax", "Cmax_D", "Tlast", "Clast", "Clast_pred", "AUClast", "AUCall", "AUCINF_obs", "AUC_Extrap_obs", "AUCINF_pred", "AUC_Extrap_pred", "AUMClast", "AUMCINF_obs", "AUMC_Extrap_obs", "AUMCINF_pred", "AUMC_Extrap_pred", "MRTlast", "MRTINF_obs", "MRTINF_pred", "AUC7day", "AUC28day", "AUC3month", "Vz_F_obs", "Cl_F_obs", "Vz_F_pred", "Cl_F_pred"
+  "NoSamples", "Rsq", "RsqAdjusted", "CorrXY", "NoPointsLambdaz", "Lambdaz", "LambdazIntercept", "LambdazLower", "LambdazUpper", "HalfLife", "Span", "Tmax", "Cmax", "CmaxD", "Tlast", "Clast", "ClastPred", "AucLast", "AucAll", "AucInfObs", "AucExtrapObs", "AucInfPred", "AucExtrapPred", "AumcLast", "AumcInfObs", "AumcExtrapObs", "AumcInfPred", "AumcExtrapPred", "MrtLast", "MrtInfObs", "MrtInfPred", "AucD7", "AucD28", "AucM3", "AucM6", "VolumeOfDistributionObs", "ClearanceObs", "VolumeOfDistributionPred", "ClearancePred"
 )
 
 #' Validate requested metrics
@@ -36,44 +36,44 @@ calculate_nca_tcell <- function(time, conc, dose, metrics = "all") {
   # result
   result <- list()
 
-  if ("N_Samples" %in% metrics_to_calc) {
-    result$N_Samples <- N_Samples = getSampleNumber(data = tmp)
+  if ("NoSamples" %in% metrics_to_calc) {
+    result$NoSamples <- getSampleNumber(data = tmp)
   }
 
   if ("Rsq" %in% metrics_to_calc) {
     result$Rsq <- tmp.lambdaz$rsq
   }
 
-  if ("Rsq_adjusted" %in% metrics_to_calc) {
-    result$Rsq_adjusted <- tmp.lambdaz$rsqAdj
+  if ("RsqAdjusted" %in% metrics_to_calc) {
+    result$RsqAdjusted <- tmp.lambdaz$rsqAdj
   }
 
-  if ("Corr_XY" %in% metrics_to_calc) {
-    result$Corr_XY <- tmp.lambdaz$corrXY  # from lambdaZ.R
+  if ("CorrXY" %in% metrics_to_calc) {
+    result$CorrXY <- tmp.lambdaz$corrXY  # from lambdaZ.R
   }
 
-  if ("No_points_lambda_z" %in% metrics_to_calc) {
-    result$No_points_lambda_z <- tmp.lambdaz$nSample
+  if ("NoPointsLambdaz" %in% metrics_to_calc) {
+    result$NoPointsLambdaz <- tmp.lambdaz$nSample
   }
 
-  if ("Lambda_z" %in% metrics_to_calc) {
-    result$Lambda_z <- tmp.lambdaz$lambdaZ
+  if ("Lambdaz" %in% metrics_to_calc) {
+    result$Lambdaz <- tmp.lambdaz$lambdaZ
   }
 
-  if ("Lambda_z_intercept" %in% metrics_to_calc) {
-    result$Lambda_z_intercept <- tmp.lambdaz$Intercept  
+  if ("LambdazIntercept" %in% metrics_to_calc) {
+    result$LambdazIntercept <- tmp.lambdaz$Intercept  
   }
 
-  if ("Lambda_z_lower" %in% metrics_to_calc) {
-    result$Lambda_z_lower <- tmp.lambdaz$lambdazLower
+  if ("LambdazLower" %in% metrics_to_calc) {
+    result$LambdazLower <- tmp.lambdaz$lambdazLower
   }
 
-  if ("Lambda_z_upper" %in% metrics_to_calc) {
-    result$Lambda_z_upper <- tmp.lambdaz$lambdazUpper
+  if ("LambdazUpper" %in% metrics_to_calc) {
+    result$LambdazUpper <- tmp.lambdaz$lambdazUpper
   }
 
-  if ("Halflife_Lambda_z" %in% metrics_to_calc) {
-    result$Halflife_Lambda_z <- tmp.lambdaz$halfLife
+  if ("HalfLife" %in% metrics_to_calc) {
+    result$HalfLife <- tmp.lambdaz$halfLife
   }
 
   if ("Span" %in% metrics_to_calc) {
@@ -88,8 +88,8 @@ calculate_nca_tcell <- function(time, conc, dose, metrics = "all") {
     result$Cmax <- getCmax(data = tmp)
   }
 
-  if ("Cmax_D" %in% metrics_to_calc) {
-    result$Cmax_D <- getCmaxD(data = tmp, Dose = dose)
+  if ("CmaxD" %in% metrics_to_calc) {
+    result$CmaxD <- getCmaxD(data = tmp, Dose = dose)
   }
 
   if ("Tlast" %in% metrics_to_calc) {
@@ -100,96 +100,96 @@ calculate_nca_tcell <- function(time, conc, dose, metrics = "all") {
     result$Clast <- getClast(data = tmp)
   }
 
-  if ("Clast_pred" %in% metrics_to_calc) {
-    result$Clast_pred <- tmp.lambdaz$clastPred
+  if ("ClastPred" %in% metrics_to_calc) {
+    result$ClastPred <- tmp.lambdaz$clastPred
   }
 
-  if ("AUClast" %in% metrics_to_calc) {
-    result$AUClast <- getAucLast(data = tmp, method = "LinearUpLogDown")
+  if ("AucLast" %in% metrics_to_calc) {
+    result$AucLast <- getAucLast(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("AUCall" %in% metrics_to_calc) {
-    result$AUCall <- getAucAll(data = tmp, method = "LinearUpLogDown")
+  if ("AucAll" %in% metrics_to_calc) {
+    result$AucAll <- getAucAll(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("AUCINF_obs" %in% metrics_to_calc) {
-    result$AUCINF_obs <- getAucInf(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AucInfObs" %in% metrics_to_calc) {
+    result$AucInfObs <- getAucInf(data = tmp, type = "obs", method = "LinearUpLogDown")
   }
 
-  if ("AUC_Extrap_obs" %in% metrics_to_calc) {
-    result$AUC_Extrap_obs <- getAucPrecentExtrap(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AucExtrapObs" %in% metrics_to_calc) {
+    result$AucExtrapObs <- getAucPrecentExtrap(data = tmp, type = "obs", method = "LinearUpLogDown")
   }
 
-  if ("AUCINF_pred" %in% metrics_to_calc) {
-    result$AUCINF_pred <- getAucInf(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AucInfPred" %in% metrics_to_calc) {
+    result$AucInfPred <- getAucInf(data = tmp, type = "pred", method = "LinearUpLogDown")
   }
 
-  if ("AUC_Extrap_pred" %in% metrics_to_calc) {
-    result$AUC_Extrap_pred <- getAucPrecentExtrap(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AucExtrapPred" %in% metrics_to_calc) {
+    result$AucExtrapPred <- getAucPrecentExtrap(data = tmp, type = "pred", method = "LinearUpLogDown")
   }
 
-  if ("AUMClast" %in% metrics_to_calc) {
-    result$AUMClast <- getAumcLast(data = tmp, method = "LinearUpLogDown")
+  if ("AumcLast" %in% metrics_to_calc) {
+    result$AumcLast <- getAumcLast(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("AUMCINF_obs" %in% metrics_to_calc) {
-    result$AUMCINF_obs <- getAumcInf(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AumcInfObs" %in% metrics_to_calc) {
+    result$AumcInfObs <- getAumcInf(data = tmp, type = "obs", method = "LinearUpLogDown")
   }  
 
-  if ("AUMC_Extrap_obs" %in% metrics_to_calc) {
-    result$AUMC_Extrap_obs <- getAumcPrecentExtrap(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AumcExtrapObs" %in% metrics_to_calc) {
+    result$AumcExtrapObs <- getAumcPrecentExtrap(data = tmp, type = "obs", method = "LinearUpLogDown")
   }
 
-  if ("AUMCINF_pred" %in% metrics_to_calc) {
-    result$AUMCINF_pred <- getAumcInf(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AumcInfPred" %in% metrics_to_calc) {
+    result$AumcInfPred <- getAumcInf(data = tmp, type = "pred", method = "LinearUpLogDown")
   }
 
-  if ("AUMC_Extrap_pred" %in% metrics_to_calc) {
-    result$AUMC_Extrap_pred <- getAumcPrecentExtrap(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AumcExtrapPred" %in% metrics_to_calc) {
+    result$AumcExtrapPred <- getAumcPrecentExtrap(data = tmp, type = "pred", method = "LinearUpLogDown")
   }
 
-  if ("MRTlast" %in% metrics_to_calc) {
-    result$MRTlast <- getMrtLast(data = tmp, method = "LinearUpLogDown")
+  if ("MrtLast" %in% metrics_to_calc) {
+    result$MrtLast <- getMrtLast(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("MRTINF_obs" %in% metrics_to_calc) {
-    result$MRTINF_obs <- getMrtInf(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("MrtInfObs" %in% metrics_to_calc) {
+    result$MrtInfObs <- getMrtInf(data = tmp, type = "obs", method = "LinearUpLogDown")
   }
 
-  if ("MRTINF_pred" %in% metrics_to_calc) {
-    result$MRTINF_pred <- getMrtInf(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("MrtInfPred" %in% metrics_to_calc) {
+    result$MrtInfPred <- getMrtInf(data = tmp, type = "pred", method = "LinearUpLogDown")
   }
 
-  if ("AUC7day" %in% metrics_to_calc) {
-    result$AUC7day <- getAuc7D(data = tmp, method = "LinearUpLogDown")
+  if ("AucD7" %in% metrics_to_calc) {
+    result$AucD7 <- getAuc7D(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("AUC28day" %in% metrics_to_calc) {
-    result$AUC28day <- getAuc28D(data = tmp, method = "LinearUpLogDown")
+  if ("AucD28" %in% metrics_to_calc) {
+    result$AucD28 <- getAuc28D(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("AUC3month" %in% metrics_to_calc) {
-    result$AUC3month <- getAuc3M(data = tmp, method = "LinearUpLogDown")
+  if ("AucM3" %in% metrics_to_calc) {
+    result$AucM3 <- getAuc3M(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("AUC6month" %in% metrics_to_calc) {
-    result$AUC6month <- getAuc6M(data = tmp, method = "LinearUpLogDown")
+  if ("AucM6" %in% metrics_to_calc) {
+    result$AucM6 <- getAuc6M(data = tmp, method = "LinearUpLogDown")
   }
 
-  if ("Vz_F_obs" %in% metrics_to_calc) {
-    result$Vz_F_obs <- getVzF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("VolumeOfDistributionObs" %in% metrics_to_calc) {
+    result$VolumeOfDistributionObs <- getVzF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
   }
 
-  if ("Cl_F_obs" %in% metrics_to_calc) {
-    result$Cl_F_obs <- getClF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("ClearanceObs" %in% metrics_to_calc) {
+    result$ClearanceObs <- getClF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
   }
 
-  if ("Vz_F_pred" %in% metrics_to_calc) {
-    result$Vz_F_pred <- getVzF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("VolumeOfDistributionPred" %in% metrics_to_calc) {
+    result$VolumeOfDistributionPred <- getVzF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
   }
 
-  if ("Cl_F_pred" %in% metrics_to_calc) {
-    result$Cl_F_pred <- getClF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("ClearancePred" %in% metrics_to_calc) {
+    result$ClearancePred <- getClF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
   }  
 
   return(result)
@@ -205,44 +205,44 @@ calculate_nca_cytokine <- function(time, conc, dose, metrics = "all") {
   # result
   result <- list()
 
-  if ("N_Samples" %in% metrics_to_calc) {
-    result$N_Samples <- N_Samples = getSampleNumber(data = tmp)
+  if ("NoSamples" %in% metrics_to_calc) {
+    result$NoSamples <- getSampleNumber(data = tmp)
   }
 
   if ("Rsq" %in% metrics_to_calc) {
     result$Rsq <- tmp.lambdaz$rsq
   }
 
-  if ("Rsq_adjusted" %in% metrics_to_calc) {
-    result$Rsq_adjusted <- tmp.lambdaz$rsqAdj
+  if ("RsqAdjusted" %in% metrics_to_calc) {
+    result$RsqAdjusted <- tmp.lambdaz$rsqAdj
   }
 
-  if ("Corr_XY" %in% metrics_to_calc) {
-    result$Corr_XY <- tmp.lambdaz$corrXY  # from lambdaZ.R
+  if ("CorrXY" %in% metrics_to_calc) {
+    result$CorrXY <- tmp.lambdaz$corrXY  # from lambdaZ.R
   }
 
-  if ("No_points_lambda_z" %in% metrics_to_calc) {
-    result$No_points_lambda_z <- tmp.lambdaz$nSample
+  if ("NoPointsLambdaz" %in% metrics_to_calc) {
+    result$NoPointsLambdaz <- tmp.lambdaz$nSample
   }
 
-  if ("Lambda_z" %in% metrics_to_calc) {
-    result$Lambda_z <- tmp.lambdaz$lambdaZ
+  if ("Lambdaz" %in% metrics_to_calc) {
+    result$Lambdaz <- tmp.lambdaz$lambdaZ
   }
 
-  if ("Lambda_z_intercept" %in% metrics_to_calc) {
-    result$Lambda_z_intercept <- tmp.lambdaz$Intercept  
+  if ("LambdazIntercept" %in% metrics_to_calc) {
+    result$LambdazIntercept <- tmp.lambdaz$Intercept  
   }
 
-  if ("Lambda_z_lower" %in% metrics_to_calc) {
-    result$Lambda_z_lower <- tmp.lambdaz$lambdazLower
+  if ("LambdazLower" %in% metrics_to_calc) {
+    result$LambdazLower <- tmp.lambdaz$lambdazLower
   }
 
-  if ("Lambda_z_upper" %in% metrics_to_calc) {
-    result$Lambda_z_upper <- tmp.lambdaz$lambdazUpper
+  if ("LambdazUpper" %in% metrics_to_calc) {
+    result$LambdazUpper <- tmp.lambdaz$lambdazUpper
   }
 
-  if ("Halflife_Lambda_z" %in% metrics_to_calc) {
-    result$Halflife_Lambda_z <- tmp.lambdaz$halfLife
+  if ("HalfLife" %in% metrics_to_calc) {
+    result$HalfLife <- tmp.lambdaz$halfLife
   }
 
   if ("Span" %in% metrics_to_calc) {
@@ -257,8 +257,8 @@ calculate_nca_cytokine <- function(time, conc, dose, metrics = "all") {
     result$Cmax <- getCmax(data = tmp)
   }
 
-  if ("Cmax_D" %in% metrics_to_calc) {
-    result$Cmax_D <- getCmaxD(data = tmp, Dose = dose)
+  if ("CmaxD" %in% metrics_to_calc) {
+    result$CmaxD <- getCmaxD(data = tmp, Dose = dose)
   }
 
   if ("Tlast" %in% metrics_to_calc) {
@@ -269,96 +269,96 @@ calculate_nca_cytokine <- function(time, conc, dose, metrics = "all") {
     result$Clast <- getClast(data = tmp)
   }
 
-  if ("Clast_pred" %in% metrics_to_calc) {
-    result$Clast_pred <- tmp.lambdaz$clastPred
+  if ("ClastPred" %in% metrics_to_calc) {
+    result$ClastPred <- tmp.lambdaz$clastPred
   }
 
-  if ("AUClast" %in% metrics_to_calc) {
-    result$AUClast <- getAucLast(data = tmp, method = "LinearUpLogDown")
+  if ("AucLast" %in% metrics_to_calc) {
+    result$AucLast <- getAucLast(data = tmp, method = "Linear")
   }
 
-  if ("AUCall" %in% metrics_to_calc) {
-    result$AUCall <- getAucAll(data = tmp, method = "LinearUpLogDown")
+  if ("AucAll" %in% metrics_to_calc) {
+    result$AucAll <- getAucAll(data = tmp, method = "Linear")
   }
 
-  if ("AUCINF_obs" %in% metrics_to_calc) {
-    result$AUCINF_obs <- getAucInf(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AucInfObs" %in% metrics_to_calc) {
+    result$AucInfObs <- getAucInf(data = tmp, type = "obs", method = "Linear")
   }
 
-  if ("AUC_Extrap_obs" %in% metrics_to_calc) {
-    result$AUC_Extrap_obs <- getAucPrecentExtrap(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AucExtrapObs" %in% metrics_to_calc) {
+    result$AucExtrapObs <- getAucPrecentExtrap(data = tmp, type = "obs", method = "Linear")
   }
 
-  if ("AUCINF_pred" %in% metrics_to_calc) {
-    result$AUCINF_pred <- getAucInf(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AucInfPred" %in% metrics_to_calc) {
+    result$AucInfPred <- getAucInf(data = tmp, type = "pred", method = "Linear")
   }
 
-  if ("AUC_Extrap_pred" %in% metrics_to_calc) {
-    result$AUC_Extrap_pred <- getAucPrecentExtrap(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AucExtrapPred" %in% metrics_to_calc) {
+    result$AucExtrapPred <- getAucPrecentExtrap(data = tmp, type = "pred", method = "Linear")
   }
 
-  if ("AUMClast" %in% metrics_to_calc) {
-    result$AUMClast <- getAumcLast(data = tmp, method = "LinearUpLogDown")
+  if ("AumcLast" %in% metrics_to_calc) {
+    result$AumcLast <- getAumcLast(data = tmp, method = "Linear")
   }
 
-  if ("AUMCINF_obs" %in% metrics_to_calc) {
-    result$AUMCINF_obs <- getAumcInf(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AumcInfObs" %in% metrics_to_calc) {
+    result$AumcInfObs <- getAumcInf(data = tmp, type = "obs", method = "Linear")
   }  
 
-  if ("AUMC_Extrap_obs" %in% metrics_to_calc) {
-    result$AUMC_Extrap_obs <- getAumcPrecentExtrap(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("AumcExtrapObs" %in% metrics_to_calc) {
+    result$AumcExtrapObs <- getAumcPrecentExtrap(data = tmp, type = "obs", method = "Linear")
   }
 
-  if ("AUMCINF_pred" %in% metrics_to_calc) {
-    result$AUMCINF_pred <- getAumcInf(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AumcInfPred" %in% metrics_to_calc) {
+    result$AumcInfPred <- getAumcInf(data = tmp, type = "pred", method = "Linear")
   }
 
-  if ("AUMC_Extrap_pred" %in% metrics_to_calc) {
-    result$AUMC_Extrap_pred <- getAumcPrecentExtrap(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("AumcExtrapPred" %in% metrics_to_calc) {
+    result$AumcExtrapPred <- getAumcPrecentExtrap(data = tmp, type = "pred", method = "Linear")
   }
 
-  if ("MRTlast" %in% metrics_to_calc) {
-    result$MRTlast <- getMrtLast(data = tmp, method = "LinearUpLogDown")
+  if ("MrtLast" %in% metrics_to_calc) {
+    result$MrtLast <- getMrtLast(data = tmp, method = "Linear")
   }
 
-  if ("MRTINF_obs" %in% metrics_to_calc) {
-    result$MRTINF_obs <- getMrtInf(data = tmp, type = "obs", method = "LinearUpLogDown")
+  if ("MrtInfObs" %in% metrics_to_calc) {
+    result$MrtInfObs <- getMrtInf(data = tmp, type = "obs", method = "Linear")
   }
 
-  if ("MRTINF_pred" %in% metrics_to_calc) {
-    result$MRTINF_pred <- getMrtInf(data = tmp, type = "pred", method = "LinearUpLogDown")
+  if ("MrtInfPred" %in% metrics_to_calc) {
+    result$MrtInfPred <- getMrtInf(data = tmp, type = "pred", method = "Linear")
   }
 
-  if ("AUC7day" %in% metrics_to_calc) {
-    result$AUC7day <- getAuc7D(data = tmp, method = "LinearUpLogDown")
+  if ("AucD7" %in% metrics_to_calc) {
+    result$AucD7 <- getAuc7D(data = tmp, method = "Linear")
   }
 
-  if ("AUC28day" %in% metrics_to_calc) {
-    result$AUC28day <- getAuc28D(data = tmp, method = "LinearUpLogDown")
+  if ("AucD28" %in% metrics_to_calc) {
+    result$AucD28 <- getAuc28D(data = tmp, method = "Linear")
   }
 
-  if ("AUC3month" %in% metrics_to_calc) {
-    result$AUC3month <- getAuc3M(data = tmp, method = "LinearUpLogDown")
+  if ("AucM3" %in% metrics_to_calc) {
+    result$AucM3 <- getAuc3M(data = tmp, method = "Linear")
   }
 
-  if ("AUC6month" %in% metrics_to_calc) {
-    result$AUC6month <- getAuc6M(data = tmp, method = "LinearUpLogDown")
+  if ("AucM6" %in% metrics_to_calc) {
+    result$AucM6 <- getAuc6M(data = tmp, method = "Linear")
   }
 
-  if ("Vz_F_obs" %in% metrics_to_calc) {
-    result$Vz_F_obs <- getVzF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("VolumeOfDistributionObs" %in% metrics_to_calc) {
+    result$VolumeOfDistributionObs <- getVzF(data = tmp, type = "obs", Dose = tmp.dose, method = "Linear")
   }
 
-  if ("Cl_F_obs" %in% metrics_to_calc) {
-    result$Cl_F_obs <- getClF(data = tmp, type = "obs", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("ClearanceObs" %in% metrics_to_calc) {
+    result$ClearanceObs <- getClF(data = tmp, type = "obs", Dose = tmp.dose, method = "Linear")
   }
 
-  if ("Vz_F_pred" %in% metrics_to_calc) {
-    result$Vz_F_pred <- getVzF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("VolumeOfDistributionPred" %in% metrics_to_calc) {
+    result$VolumeOfDistributionPred <- getVzF(data = tmp, type = "pred", Dose = tmp.dose, method = "Linear")
   }
 
-  if ("Cl_F_pred" %in% metrics_to_calc) {
-    result$Cl_F_pred <- getClF(data = tmp, type = "pred", Dose = tmp.dose, method = "LinearUpLogDown")
+  if ("ClearancePred" %in% metrics_to_calc) {
+    result$ClearancePred <- getClF(data = tmp, type = "pred", Dose = tmp.dose, method = "Linear")
   }  
   
   return(result)

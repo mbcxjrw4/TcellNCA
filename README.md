@@ -23,7 +23,7 @@ You can install the development version from GitHub:
 devtools::install_github("your-username/ncaCell")
 ```
 
-🧬 Usage
+## 🧬 Usage
 ```r
 library(ncaCell)
 
@@ -38,7 +38,7 @@ nca_results <- calculate_nca_tcell(time, conc)
 cytokine_results <- calculate_nca_cytokine(time, conc, metrics = c("Cmax", "Tmax", "AUC0_t"))
 ```
 
-⚙️ Functions Overview
+## ⚙️ Functions Overview
 | Function                   | Description                           |
 | -------------------------- | ------------------------------------- |
 | `calculate_nca_tcell()`    | NCA metrics for T-cell persistence    |

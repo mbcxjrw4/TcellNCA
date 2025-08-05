@@ -35,7 +35,7 @@ conc <- c(0, 200, 150, 90, 40, 10)
 nca_results <- calculate_nca_tcell(time, conc)
 
 # Run NCA for serum cytokines, requesting specific metrics
-cytokine_results <- calculate_nca_cytokine(time, conc, metrics = c("Cmax", "Tmax", "AUC0_t"))
+cytokine_results <- calculate_nca_cytokine(time, conc, dose = 100,metrics = c("Cmax", "Tmax", "AucAll"))
 ```
 
 ## ⚙️ Functions Overview

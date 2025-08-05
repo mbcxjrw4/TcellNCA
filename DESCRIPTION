@@ -1,0 +1,23 @@
+Package: TcellNCA
+Type: Package
+Title: Perform Non-Compartmental Analysis (NCA) tailored to cell therapies
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Ruoxi", "Wang",
+      email = "xiruowang@hotmail.com",
+      role = c("aut", "cre")
+    )
+  )
+Description: Compute standard Non-Compartmental Analysis (NCA) parameters for
+    cell therapies, particularly for T-cell persistence and serum cytokine data.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+  data.table
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

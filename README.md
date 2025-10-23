@@ -25,7 +25,7 @@ devtools::install_github("your-username/TcellNCA")
 
 ## 🧬 Usage
 ```r
-library(ncaCell)
+library(TcellNCA)
 
 # Example time and concentration data
 time <- c(0, 1, 2, 4, 7, 14)
